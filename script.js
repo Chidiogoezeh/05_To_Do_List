@@ -71,8 +71,7 @@ const addItem = () => {
 };
 
 const removeItem = (idx) => {
-    // "Deleted" state - in this structure, we remove from array 
-    // but you could set status to 'deleted' if you want a trash bin
+    // "Deleted" state - in this structure, we remove from array
     items.splice(idx, 1);
     saveItems();
     renderItems();
