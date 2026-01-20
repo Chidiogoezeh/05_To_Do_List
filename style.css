@@ -1,0 +1,148 @@
+/* 1. Global Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* 2. Main Container */
+#app-container {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+/* 3. Filter Navigation */
+.filters {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: color 0.2s;
+}
+
+.filter-btn.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+/* 4. List Items & States */
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Keeps button and text centered vertically */
+    padding: 12px;
+    background: #fafafa;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    gap: 15px; /* Creates space between text and button */
+}
+
+.item-text {
+    flex: 1; /* Allows text to take all available space */
+    cursor: pointer;
+    word-break: break-word; /* Better than break-all for readability */
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #333;
+}
+
+.completed-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* 5. Input & Buttons */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+button[onclick="addItem()"] {
+    background-color: #28a745;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap; /* Prevents the word "Delete" from breaking */
+    flex-shrink: 0; /* Prevents the button from squishing */
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* 6. Mobile Responsiveness */
+@media (max-width: 480px) {
+    #app-container {
+        padding: 1.5rem 1rem;
+        margin: 10px; /* Gives some breathing room from screen edges */
+    }
+
+    .item-row {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .item-text {
+        font-size: 0.95rem; /* Slightly smaller text for small screens */
+    }
+}
