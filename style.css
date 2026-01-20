@@ -1,3 +1,4 @@
+/* 1. Reset & Global Styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,7 +13,7 @@ body {
     padding: 20px;
 }
 
-/* Main Container */
+/* 2. Container */
 #app-container {
     background: white;
     width: 100%;
@@ -24,17 +25,16 @@ body {
 
 h1 {
     color: #333;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
-/* Filter Navigation */
+/* 3. Filter Tabs */
 .filters {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
     border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
 }
 
 .filter-btn {
@@ -43,35 +43,41 @@ h1 {
     color: #888;
     font-weight: bold;
     cursor: pointer;
-    padding: 5px 10px;
-    transition: color 0.2s;
+    padding: 10px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
 }
 
 .filter-btn.active {
     color: #007bff;
-    border-bottom: 2px solid #007bff;
+    border-bottom-color: #007bff;
 }
 
-/* List Items & States */
+/* Special Trash Tab Active Color */
+.filter-btn[onclick*="deleted"].active {
+    color: #dc3545;
+    border-bottom-color: #dc3545;
+}
+
+/* 4. List Items (Crucial for Mobile Display) */
 .item-row {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Keeps button and text centered vertically */
+    align-items: center;
     padding: 12px;
     background: #fafafa;
     border: 1px solid #eee;
     margin-bottom: 10px;
     border-radius: 8px;
-    gap: 15px; /* Creates space between text and button */
+    gap: 15px; /* Keeps space between text and buttons */
 }
 
 .item-text {
-    flex: 1; /* Allows text to take all available space */
+    flex: 1; /* Forces text to fill remaining space */
     cursor: pointer;
-    word-break: break-word; /* Better than break-all for readability */
-    font-size: 1rem;
-    line-height: 1.4;
+    word-break: break-word; /* Prevents long text from breaking the layout */
     color: #333;
+    line-height: 1.4;
 }
 
 .completed-text {
@@ -79,69 +85,69 @@ h1 {
     color: #888;
 }
 
-/* Input & Buttons */
-.input-group {
+/* 5. Buttons */
+.button-group {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-input[type="text"] {
-    flex: 1;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus {
-    border-color: #007bff;
+    gap: 8px;
+    flex-shrink: 0; /* Prevents the container from squishing */
 }
 
 button {
     cursor: pointer;
-    padding: 10px 15px;
     border: none;
     border-radius: 6px;
-    font-weight: bold;
+    font-weight: 600;
+    padding: 8px 14px;
+    white-space: nowrap; /* Forces "Delete/Done" to stay on one line */
+    flex-shrink: 0;      /* Forces the button to keep its width */
     transition: opacity 0.2s;
-}
-
-button[onclick="addItem()"] {
-    background-color: #28a745;
-    color: white;
-}
-
-.delete-btn {
-    background-color: #dc3545;
-    color: white;
-    font-size: 0.8rem;
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    white-space: nowrap; /* Prevents the word "Delete" from breaking */
-    flex-shrink: 0; /* Prevents the button from squishing */
 }
 
 button:hover {
     opacity: 0.8;
 }
 
-/* Mobile Responsiveness */
+.done-btn { background-color: #007bff; color: white; }
+.delete-btn { background-color: #dc3545; color: white; }
+
+/* 6. Input Area */
+.input-group {
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+}
+
+/* The Main "Add Item" Button */
+button[onclick="addItem()"] {
+    background-color: #28a745;
+    color: white;
+    width: 100%;
+}
+
+/* 7. Mobile Responsiveness Fixes */
 @media (max-width: 480px) {
     #app-container {
-        padding: 1.5rem 1rem;
-        margin: 10px; /* Gives some breathing room from screen edges */
+        padding: 1.2rem 1rem;
     }
 
     .item-row {
+        /* Prevents the "single-letter" column bug from your screenshot */
+        align-items: flex-start; 
         padding: 10px;
-        gap: 10px;
     }
 
     .item-text {
-        font-size: 0.95rem; /* Slightly smaller text for small screens */
+        font-size: 0.95rem;
     }
 }

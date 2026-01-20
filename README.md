@@ -1,53 +1,57 @@
-TODO List Pro
-A lightweight, mobile-responsive Task Management application built with Vanilla JavaScript (ES6+), HTML5, and CSS3. This project features task state management, local storage persistence, and a clean user interface optimized for all devices.
+TODO List
+A lightweight, mobile-responsive Task Management application built with Vanilla JavaScript (ES6+), HTML5, and CSS3. This project features a robust three-tier task state management system, local storage persistence, and a layout optimized to prevent text-squishing on small devices.
 
 Features
-Task States: Manage tasks through three primary states: Pending, Completed, and Deleted.
+Advanced Task States: Manage tasks through three distinct lifecycles: Pending, Completed, and Deleted (Trash).
 
-Dynamic Filtering: Toggle between "Pending" and "Completed" views to stay organized.
+Dynamic Filtering: Seamlessly toggle between "Pending," "Completed," and "Trash" views to maintain focus.
 
-Data Persistence: All tasks are saved to the browser's localStorage, ensuring your data remains even after refreshing the page.
+Restoration & Purging: Recover tasks from the Trash or permanently delete them to clear storage.
 
-Mobile-First Design: Fully responsive layout that adapts to desktops, tablets, and smartphones.
+Data Persistence: All tasks are saved to the browser's localStorage (v3), ensuring data survives refreshes.
 
-Secure DOM Updates: Uses modern DOM manipulation techniques instead of innerHTML to prevent XSS vulnerabilities.
+Mobile-Optimized UI: Uses modern Flexbox properties like flex-shrink: 0 to ensure text remains readable and buttons stay accessible on mobile screens.
+
+Secure DOM Updates: Implements modern DOM manipulation (textContent, appendChild) to prevent XSS vulnerabilities.
 
 Project Structure
 The project is contained within three main files:
 
 File,       Description
 
-index.html, "The semantic structure of the app, including the filter navigation and input areas."
+index.html, The semantic structure of the app, including the filter navigation and input areas.
 
-style.css,  "Modern, vanilla CSS featuring Flexbox for layout and Media Queries for responsiveness."
+style.css,  Modern, vanilla CSS featuring Flexbox for layout and Media Queries for responsiveness.
 
-script.js,  "ES6+ logic handling state management, storage, and dynamic rendering."
+script.js,  ES6+ logic handling state transitions, conditional button rendering, and permanent purging.
 
 How to Use
 1. Adding a Task
-Type your task into the input field at the bottom and click "Add Item" or press the Enter key. New tasks are automatically categorized as Pending.
+Type your task into the input field and click "Add Item" or press Enter. New tasks appear in the Pending tab.
 
-2. Completing a Task
-While in the "Pending" tab, click on the text of any task. It will automatically move to the Completed tab and appear with a strikethrough.
+2. Marking as Done
+In the Pending tab, click the blue "Done" button. The task will move to the Completed tab with a strikethrough effect.
 
-3. Sorting/Filtering
-Use the navigation tabs at the top to switch between your current active tasks (Pending) and those you have finished (Completed).
+3. Deleting to Trash
+In the Completed tab, click the red "Delete" button. This does not erase the task but moves it to the Trash for review.
 
-4. Deleting a Task
-Click the red "Delete" button on any task row. This will permanently remove the item from your list and local storage.
+4. Managing the Trash
+In the Trash tab, you have two options:
+Restore: Moves the task back to the Pending state.
+Purge: Permanently deletes the task from the database after a confirmation prompt.
 
 Installation
 No installation or build process is required. To run the project locally:
 
-Download the index.html, style.css, and script.js files into the same folder.
+Download index.html, style.css, and script.js into a single directory.
 
-Open index.html in any modern web browser (Chrome, Firefox, Safari, or Edge).
+Open index.html in any modern browser (Chrome, Firefox, Safari, Edge).
 
 Technical Details
-Language: JavaScript ES6+ (Arrow functions, Template Literals, Destructuring).
+Language: JavaScript ES6+ (Arrow functions, filter/indexOf methods).
 
-Storage: window.localStorage (Data is stored as a JSON string).
+Storage: window.localStorage using JSON serialization for complex objects.
 
-Styling: Vanilla CSS (No frameworks like Bootstrap or Tailwind required).
+Layout Engine: CSS Flexbox with flex-wrap and flex-shrink to solve the "single-letter column" bug on mobile browsers.
 
-Responsiveness: Uses flex-shrink and min-width properties to prevent layout breaking on mobile screens.
+State Logic: Items are stored as objects: { text: string, status: 'pending' | 'completed' | 'deleted', id: number }.

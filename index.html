@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO List Pro</title>
+    <title>TODO APP</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app-container">
         <h1>TODO List</h1>
-        
         <div class="filters">
             <button class="filter-btn active" onclick="setFilter('pending')">Pending</button>
             <button class="filter-btn" onclick="setFilter('completed')">Completed</button>
+            <button class="filter-btn" onclick="setFilter('deleted')">Trash</button>
         </div>
-
         <div id="items"></div>
-
         <div class="input-group">
             <input id="itemInput" type="text" placeholder="Add a new task..."/>
             <button onclick="addItem()">Add Item</button>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
